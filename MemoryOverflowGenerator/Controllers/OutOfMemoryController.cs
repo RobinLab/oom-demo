@@ -7,22 +7,23 @@ namespace MemoryOverflowGenerator.Controllers
     public class OutOfMemoryController : ControllerBase
     {
         private static List<byte[]> _memory = new List<byte[]>();
-        private readonly ILogger<WeatherForecastController> _logger;
 
-        private const int LENGTH = 1 * 1024 * 1024 * 1024;
-        private const int COUNT = 5;
-        public OutOfMemoryController(ILogger<WeatherForecastController> logger)
-        {
-            _logger = logger;
-        }
-
+        /// <summary>
+        /// Ôö¼ÓÄÚ´æ
+        /// </summary>
         [HttpPost]
-        public long AddMemory()
+        public long AddMemory([FromBody] MemorySizeDto req)
         {
-            for(var i = 0; i < COUNT; i++)
-                _memory.Add(new byte[LENGTH]);
+            for (var i = 0; i < req.Times; i++)
+                _memory.Add(new byte[req.Size]);
             var sum = _memory.Select(m => m.LongLength).DefaultIfEmpty().Sum();
             return sum;
         }
+    }
+
+    public class MemorySizeDto
+    {
+        public int Size { get; set; }
+        public int Times { get; set; }
     }
 }
