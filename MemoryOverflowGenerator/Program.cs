@@ -4,6 +4,7 @@ namespace MemoryOverflowGenerator
     {
         public static void Main(string[] args)
         {
+            Console.WriteLine("hello world!");
             //OutOfMemoryTest();
             var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +20,7 @@ namespace MemoryOverflowGenerator
             app.UseSwagger();
             app.UseSwaggerUI();
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseAuthorization();
 

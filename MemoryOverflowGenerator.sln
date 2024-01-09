@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryOverflowGenerator", "MemoryOverflowGenerator\MemoryOverflowGenerator.csproj", "{D7BE5BEC-2A86-44D4-B91D-CC6C69F5824E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemoryOverflowGenerator", "MemoryOverflowGenerator\MemoryOverflowGenerator.csproj", "{D7BE5BEC-2A86-44D4-B91D-CC6C69F5824E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决方案项", "{B4679E17-792C-43EB-BC09-9649CF4FECB8}"
+	ProjectSection(SolutionItems) = preProject
+		Dockerfile = Dockerfile
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
