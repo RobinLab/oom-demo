@@ -1,9 +1,11 @@
 ﻿
+using System.Collections.Concurrent;
+
 namespace MemoryOverflowGenerator.Services
 {
     public class OOMHostedService : IHostedService
     {
-        public static List<byte[]> MEMORY = new List<byte[]>();
+        public static ConcurrentBag<byte[]> MEMORY = new ConcurrentBag<byte[]>();
 
         private int executionCount = 0;
         private readonly ILogger<OOMHostedService> _logger;
