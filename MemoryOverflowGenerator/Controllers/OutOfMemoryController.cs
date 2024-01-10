@@ -16,7 +16,7 @@ namespace MemoryOverflowGenerator.Controllers
         {
             //for (var i = 0; i < req.Times; i++)
             //    OOMHostedService.MEMORY.Add(new byte[req.Size]);
-            OOMHostedService.OnOff = req.On;
+            OOMHostedService.Quests.Add(true);
             var sum = OOMHostedService.MEMORY.Select(m => m.LongLength).DefaultIfEmpty().Sum();
             return sum;
         }
