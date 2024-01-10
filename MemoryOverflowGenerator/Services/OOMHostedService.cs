@@ -5,6 +5,7 @@ namespace MemoryOverflowGenerator.Services
 {
     public class OOMHostedService : IHostedService
     {
+        public static volatile bool OnOff = false;
         public static ConcurrentBag<byte[]> MEMORY = new ConcurrentBag<byte[]>();
 
         private int executionCount = 0;
@@ -28,10 +29,13 @@ namespace MemoryOverflowGenerator.Services
 
         private void DoWork(object? state)
         {
-            var count = Interlocked.Increment(ref executionCount);
-                OOMHostedService.MEMORY.Add(new byte[10*1024*1024]);
-            _logger.LogInformation(
-                "Timed Hosted Service is working. Count: {Count}", count);
+            if (OnOff)
+            {
+                var count = Interlocked.Increment(ref executionCount);
+                OOMHostedService.MEMORY.Add(new byte[10 * 1024 * 1024]);
+                _logger.LogInformation(
+                    "Timed Hosted Service is working. Count: {Count}", count);
+            }
         }
 
         public Task StopAsync(CancellationToken stoppingToken)

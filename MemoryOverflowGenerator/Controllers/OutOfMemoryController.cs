@@ -14,8 +14,9 @@ namespace MemoryOverflowGenerator.Controllers
         [HttpPost]
         public long AddMemory([FromBody] MemorySizeDto req)
         {
-            for (var i = 0; i < req.Times; i++)
-                OOMHostedService.MEMORY.Add(new byte[req.Size]);
+            //for (var i = 0; i < req.Times; i++)
+            //    OOMHostedService.MEMORY.Add(new byte[req.Size]);
+            OOMHostedService.OnOff = req.On;
             var sum = OOMHostedService.MEMORY.Select(m => m.LongLength).DefaultIfEmpty().Sum();
             return sum;
         }
@@ -23,7 +24,6 @@ namespace MemoryOverflowGenerator.Controllers
 
     public class MemorySizeDto
     {
-        public int Size { get; set; }
-        public int Times { get; set; }
+        public bool On { get; set; }
     }
 }
